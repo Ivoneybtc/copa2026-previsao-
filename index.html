@@ -406,29 +406,222 @@ function getTeamFifa(name) {
     return team ? team.fifa : '';
 }
 
+// ===== PROFESSIONAL PREDICTION MODEL =====
+const ELO_AVG = 1500;
+const HOME_ELO = 80;
+const K_FACTOR = 40;
+const DIXON_RHO = -0.15;
+const BASE_RATE = 1.35;
+const MC_ITERATIONS = 10000;
+
+let eloRatings = {};
+let monteCarloProbs = {};
+
+function fact(n) {
+    if (n <= 1) return 1;
+    let r = 1;
+    for (let i = 2; i <= n; i++) r *= i;
+    return r;
+}
+
+function poissonProb(lambda, k) {
+    return Math.exp(-lambda) * Math.pow(lambda, k) / fact(k);
+}
+
+function eloExpected(eloA, eloB) {
+    return 1 / (1 + Math.pow(10, (eloB - eloA) / 400));
+}
+
+function dcTau(i, j, lH, lA, rho) {
+    if (i === 0 && j === 0) return 1 - lH * lA * rho;
+    if (i === 0 && j === 1) return 1 + lH * rho;
+    if (i === 1 && j === 0) return 1 + lA * rho;
+    if (i === 1 && j === 1) return 1 - rho;
+    return 1;
+}
+
+function simPoissonGoals(lambdaH, lambdaA) {
+    const cells = [];
+    for (let i = 0; i <= 8; i++) {
+        for (let j = 0; j <= 8; j++) {
+            cells.push({ h: i, a: j, p: poissonProb(lambdaH, i) * poissonProb(lambdaA, j) * dcTau(i, j, lambdaH, lambdaA, DIXON_RHO) });
+        }
+    }
+    const total = cells.reduce((s, c) => s + c.p, 0);
+    let r = Math.random(), cum = 0;
+    for (const c of cells) {
+        cum += c.p / total;
+        if (r < cum) return { homeGoals: c.h, awayGoals: c.a };
+    }
+    return { homeGoals: 0, awayGoals: 0 };
+}
+
+function buildScoreProbs(lambdaH, lambdaA) {
+    const cells = [];
+    for (let i = 0; i <= 8; i++) {
+        for (let j = 0; j <= 8; j++) {
+            cells.push({ h: i, a: j, p: poissonProb(lambdaH, i) * poissonProb(lambdaA, j) * dcTau(i, j, lambdaH, lambdaA, DIXON_RHO) });
+        }
+    }
+    const total = cells.reduce((s, c) => s + c.p, 0);
+    let hWin = 0, draw = 0, aWin = 0, bestP = 0, bestH = 0, bestA = 0;
+    cells.forEach(c => {
+        const p = c.p / total;
+        if (p > bestP) { bestP = p; bestH = c.h; bestA = c.a; }
+        if (c.h > c.a) hWin += p;
+        else if (c.h === c.a) draw += p;
+        else aWin += p;
+    });
+    return { hWin, draw, aWin, bestH, bestA };
+}
+
+function initElo() {
+    teamsData.forEach(t => {
+        eloRatings[t.name] = ELO_AVG + (t.strength - 70) * 5;
+    });
+}
+
+function updateElo(home, away, hG, aG) {
+    const expH = eloExpected(eloRatings[home] + HOME_ELO, eloRatings[away]);
+    const margin = Math.abs(hG - aG);
+    const mult = margin > 1 ? 1 + (margin - 1) * 0.15 : 1;
+    let actH, actA;
+    if (hG > aG) { actH = 1; actA = 0; }
+    else if (aG > hG) { actH = 0; actA = 1; }
+    else { actH = 0.5; actA = 0.5; }
+    eloRatings[home] += K_FACTOR * mult * (actH - expH);
+    eloRatings[away] += K_FACTOR * mult * (actA - (1 - expH));
+}
+
+function simGroupStage() {
+    initElo();
+    matchesData.forEach(m => {
+        const hElo = eloRatings[m.home] + HOME_ELO;
+        const aElo = eloRatings[m.away];
+        const avgE = (hElo + aElo) / 2;
+        const lH = BASE_RATE * (hElo / avgE) * 1.15;
+        const lA = BASE_RATE * (aElo / avgE);
+        const res = simPoissonGoals(lH, lA);
+        updateElo(m.home, m.away, res.homeGoals, res.awayGoals);
+    });
+}
+
 function calculatePrediction(home, away) {
     const homeStr = getTeamStrength(home);
     const awayStr = getTeamStrength(away);
-    const diff = homeStr - awayStr;
-    const homeAdvantage = 3;
-    const adjustedDiff = diff + homeAdvantage;
-    let homeWin, draw, awayWin;
-    if (adjustedDiff > 15) { homeWin = 0.65; draw = 0.20; awayWin = 0.15; }
-    else if (adjustedDiff > 5) { homeWin = 0.55; draw = 0.25; awayWin = 0.20; }
-    else if (adjustedDiff > -5) { homeWin = 0.40; draw = 0.30; awayWin = 0.30; }
-    else if (adjustedDiff > -15) { homeWin = 0.25; draw = 0.25; awayWin = 0.50; }
-    else { homeWin = 0.15; draw = 0.20; awayWin = 0.65; }
-    const homeGoals = Math.max(0, Math.round((homeStr / 20) + (Math.random() * 2 - 1)));
-    const awayGoals = Math.max(0, Math.round((awayStr / 20) + (Math.random() * 2 - 1)));
+    const hElo = (eloRatings[home] || ELO_AVG) + HOME_ELO;
+    const aElo = eloRatings[away] || ELO_AVG;
+    const avgE = (hElo + aElo) / 2;
+    const lH = BASE_RATE * (hElo / avgE) * 1.15;
+    const lA = BASE_RATE * (aElo / avgE);
+    const probs = buildScoreProbs(lH, lA);
+
     let winner, winnerProb;
-    if (homeGoals > awayGoals) { winner = home; winnerProb = Math.round(homeWin * 100); }
-    else if (awayGoals > homeGoals) { winner = away; winnerProb = Math.round(awayWin * 100); }
-    else { winner = "Empate"; winnerProb = Math.round(draw * 100); }
+    if (probs.hWin >= probs.draw && probs.hWin >= probs.aWin) { winner = home; winnerProb = probs.hWin; }
+    else if (probs.aWin >= probs.hWin && probs.aWin >= probs.draw) { winner = away; winnerProb = probs.aWin; }
+    else { winner = "Empate"; winnerProb = probs.draw; }
+
     return {
-        homeScore: homeGoals, awayScore: awayGoals,
-        homeWin: Math.round(homeWin * 100), draw: Math.round(draw * 100), awayWin: Math.round(awayWin * 100),
-        winner: winner, confidence: winnerProb, homeStr: homeStr, awayStr: awayStr
+        homeScore: probs.bestH, awayScore: probs.bestA,
+        homeWin: Math.round(probs.hWin * 100), draw: Math.round(probs.draw * 100), awayWin: Math.round(probs.aWin * 100),
+        winner: winner, confidence: Math.round(winnerProb * 100),
+        homeStr: homeStr, awayStr: awayStr
     };
+}
+
+// Monte Carlo tournament simulation
+function monteCarloTournament() {
+    const groupTeams = {};
+    teamsData.forEach(t => {
+        if (!groupTeams[t.group]) groupTeams[t.group] = [];
+        groupTeams[t.group].push(t);
+    });
+
+    const wins = {};
+    teamsData.forEach(t => wins[t.name] = 0);
+
+    for (let iter = 0; iter < MC_ITERATIONS; iter++) {
+        const groupStandings = {};
+        Object.keys(groupTeams).forEach(g => {
+            const matches = matchesData.filter(m => m.group === g);
+            const pts = {}, gf = {}, ga = {};
+            groupTeams[g].forEach(t => { pts[t.name] = 0; gf[t.name] = 0; ga[t.name] = 0; });
+
+            matches.forEach(m => {
+                const hElo = (eloRatings[m.home] || ELO_AVG) + HOME_ELO;
+                const aElo = eloRatings[m.away] || ELO_AVG;
+                const avgE = (hElo + aElo) / 2;
+                const lH = BASE_RATE * (hElo / avgE) * 1.15;
+                const lA = BASE_RATE * (aElo / avgE);
+                const res = simPoissonGoals(lH, lA);
+                gf[m.home] += res.homeGoals;
+                ga[m.home] += res.awayGoals;
+                gf[m.away] += res.awayGoals;
+                ga[m.away] += res.homeGoals;
+                if (res.homeGoals > res.awayGoals) pts[m.home] += 3;
+                else if (res.awayGoals > res.homeGoals) pts[m.away] += 3;
+                else { pts[m.home] += 1; pts[m.away] += 1; }
+            });
+
+            groupStandings[g] = groupTeams[g].map(t => ({
+                name: t.name, pts: pts[t.name], gd: gf[t.name] - ga[t.name], gf: gf[t.name]
+            })).sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf);
+        });
+
+        // Top 2 from each group + 8 best 3rd places
+        const advanced = [];
+        Object.keys(groupStandings).forEach(g => {
+            advanced.push(groupStandings[g][0].name);
+            advanced.push(groupStandings[g][1].name);
+        });
+        const thirdPlaced = Object.keys(groupStandings).map(g => groupStandings[g][2])
+            .sort((a, b) => b.pts - a.pts || b.gd - a.gd || b.gf - a.gf)
+            .slice(0, 8);
+        thirdPlaced.forEach(t => advanced.push(t.name));
+
+        // Simulate full knockout bracket with Poisson-Elo
+        const winner = simKnockoutBracket(advanced);
+        if (winner) wins[winner] += 1;
+    }
+
+    const total = Object.values(wins).reduce((s, v) => s + v, 0);
+    if (total > 0) {
+        Object.keys(wins).forEach(k => {
+            monteCarloProbs[k] = (wins[k] / MC_ITERATIONS) * 100;
+        });
+    }
+}
+
+// Full bracket simulation with Poisson-Elo for each round
+function simKnockoutBracket(advancedTeams) {
+    function simMatch(teamA, teamB) {
+        const hElo = (eloRatings[teamA] || ELO_AVG) + HOME_ELO;
+        const aElo = eloRatings[teamB] || ELO_AVG;
+        const avgE = (hElo + aElo) / 2;
+        const lH = BASE_RATE * (hElo / avgE) * 1.15;
+        const lA = BASE_RATE * (aElo / avgE);
+        const res = simPoissonGoals(lH, lA);
+        if (res.homeGoals > res.awayGoals) return teamA;
+        if (res.awayGoals > res.homeGoals) return teamB;
+        return Math.random() < 0.5 ? teamA : teamB;
+    }
+
+    let round = [...advancedTeams];
+    for (let i = round.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [round[i], round[j]] = [round[j], round[i]];
+    }
+
+    while (round.length > 1) {
+        const next = [];
+        for (let i = 0; i < round.length; i += 2) {
+            if (i + 1 < round.length) next.push(simMatch(round[i], round[i + 1]));
+            else next.push(round[i]);
+        }
+        round = next;
+    }
+
+    return round[0] || '';
 }
 
 function generateAnalysis(home, away, pred) {
@@ -571,7 +764,8 @@ function renderPredictions() {
     const topTeams = [...teamsData].sort((a, b) => b.strength - a.strength).slice(0, 8);
     const topContainer = document.getElementById('top-teams');
     topContainer.innerHTML = topTeams.map((team, i) => {
-        const winProb = Math.round((team.strength / 100) * 25);
+        const mcProb = monteCarloProbs[team.name];
+        const winProb = mcProb !== undefined ? Math.round(mcProb) : Math.round((team.strength / 100) * 25);
         return `
         <div class="top-team-card" style="animation: fadeIn 0.5s ease ${i * 0.08}s both;">
             <div class="rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`} Favorito</div>
@@ -791,6 +985,7 @@ function createParticles() {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     createParticles();
+    initElo();
     renderMatches();
     renderGroups();
     renderKnockout();
@@ -802,6 +997,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.getElementById('loading').classList.add('hidden');
     }, 2000);
+
+    // Run Monte Carlo async so it doesn't block initial render
+    setTimeout(() => {
+        monteCarloTournament();
+        renderPredictions();
+    }, 100);
 });
 
 // Keyboard shortcuts
