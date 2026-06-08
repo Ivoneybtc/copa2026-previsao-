@@ -4,159 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa 2026 - Previsão de Resultados com IA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=O1Lq9DFWH9bBOv8uql-qWF9whQL2XrMQCo31m_D2vwXV5434KmSgl_zhLnDHFkYA54gLJ-4IfN4w-blYHBqDm826Znfffkcq1qUz1eE5CXK3NizZTBMX9EZlYtz1IzbaswQiwt-5QI6mWdhx_BSoZYzRsOtgrcn6ipUYxRlqwwT9LP59_XvdjtaSDVnYr90lxRxMv8ImP2zXVCFZHqfKw0vom-4aomhuA5wL24SRI6o_DSWwdv_8e48tgWuXoSuu5bb_JUc85cJ2YL2vUQ0CPTqbsU_Cmn2x73nAYmhAjPsqHIFYEp_gcxxfUOwBprjHvP_RnLCX0bqNdcvy75gTuqtBrr9IEEAvj2sVbRX-NYhBg9HtWVH2UXx1f-vUCJYUghzEEzx-ONsjPZH9m-1Jk-zn7dqT7WWAvkhnstiA_5oFpYzlTJ3G-UnAi6MjGLzFlsDAmz7BcDW2Pq1okFOmZcbXKhSLUN7ELYqIaoRrB484oy9Et-R3fdKn5l4bEw8rS3-kWAndRZCZ18bnrDVZqaW_WL6EOctzr3v9bclQoNtUiusA6BpzbmNsoukg7C6LEeQsGpt_kfgnu8206uwxvmR-AEF1_lhyRronBOTFWvXkVInKJlL-DIhKAbYJoeVPfSOxTb8EZQ2NtdPgYcDkMpysWT4VANd2yBaNVlq0afk" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9wcm9kLWNoYXQta2ltaS50b3MtY24tYmVpamluZy52b2xjZXMuY29tL2tpbWktZnMvb2tjL21tdjJiNDdzd2Q3cWsvb3V0cHV0L2NvcGEyMDI2X3ByZXZpc2FvLmh0bWw_WC1Ub3MtQWxnb3JpdGhtPVRPUzQtSE1BQy1TSEEyNTYmWC1Ub3MtQ3JlZGVudGlhbD1BS0xUWVRKbE5qZ3dNalkyWkRCa05ERmlZbUk1WVdOaVpEQmxabUZtWWpJelpUQSUyZjIwMjYwNjA4JTJmY24tYmVpamluZyUyZnRvcyUyZnJlcXVlc3QmWC1Ub3MtRGF0ZT0yMDI2MDYwOFQxOTQ3MjdaJlgtVG9zLUV4cGlyZXM9NTE4NDAwJlgtVG9zLVNpZ25hdHVyZT1iNTM5ZWQxNTU5ZjU0Mzg0YjVjN2ZlNGFiYWM2OWU4MTQ5ZWE3ZjgwY2YwOGM3OGI2YWIyZmY4MzUzMGY4NDQzJlgtVG9zLVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWF0dGFjaG1lbnQlM2IlMjBmaWxlbmFtZSUyYSUzZFVURi04JTI3JTI3Y29wYTIwMjZfcHJldmlzYW8uaHRtbA"/><style>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
         :root {
-            --primary: #0a0a1a; --secondary: #12122a; --accent: #e94560; --accent-light: #ff6b6b;
-            --gold: #ffd700; --success: #00d9ff; --warning: #ffaa00; --glass: rgba(255,255,255,0.04);
-            --glass-border: rgba(255,255,255,0.08); --text: #e0e0e0; --text-muted: #888;
+            --gold: #FFD700; --gold-light: #FFE44D; --gold-dark: #B8960F;
+            --bg-primary: #0A0A1A; --bg-secondary: #0D1B2A;
+            --white: #FFFFFF; --black: #1A1A1A;
+            --usa-blue: #3C3B6E; --usa-red: #B22234;
+            --mexico-green: #006847; --mexico-red: #CE1126;
+            --canada-red: #FF0000;
+            --text: #F0F0F0; --text-muted: #909090;
+            --glass: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.07);
+            --accent: var(--gold); --accent-light: var(--gold-light);
+            --success: #00d9ff; --warning: #ffaa00;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #050510 0%, #0a0a1a 50%, #080818 100%);
+            background: linear-gradient(135deg, #050510 0%, #0A0A1A 40%, #0D1B2A 100%);
             color: var(--text); min-height: 100vh; overflow-x: hidden;
         }
         .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-        .particle { position: absolute; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; animation: float 20s infinite; opacity: 0.2; }
+        .particle { position: absolute; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; animation: float 25s infinite; opacity: 0.15; box-shadow: 0 0 6px var(--gold); }
         @keyframes float { 0%,100% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.3; } 90% { opacity: 0.3; } 100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; } }
-        .header { position: relative; z-index: 10; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,16,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; }
-        .logo { display: flex; align-items: center; gap: 14px; }
-        .logo-icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 0 25px rgba(233,69,96,0.35); }
-        .logo-text h1 { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #fff, var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .logo-text span { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
-        .nav-tabs { display: flex; gap: 4px; background: var(--glass); padding: 4px; border-radius: 12px; border: 1px solid var(--glass-border); }
-        .nav-tab { padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.82rem; transition: all 0.3s; border: none; background: transparent; color: var(--text-muted); }
-        .nav-tab:hover { color: #fff; } .nav-tab.active { background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: #fff; box-shadow: 0 4px 15px rgba(233,69,96,0.3); }
-        .hero { position: relative; z-index: 5; text-align: center; padding: 50px 20px 35px; }
-        .hero h2 { font-size: 2.8rem; font-weight: 900; background: linear-gradient(135deg, #fff, var(--success), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; text-shadow: 0 0 40px rgba(0,217,255,0.15); }
-        .hero p { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 25px; }
-        .ai-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, rgba(0,217,255,0.08), rgba(233,69,96,0.08)); border: 1px solid rgba(0,217,255,0.2); padding: 8px 22px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--success); animation: pulse 2.5s infinite; margin-bottom: 20px; }
-        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(0,217,255,0.3); } 50% { box-shadow: 0 0 20px 5px rgba(0,217,255,0.08); } }
-        .ai-badge .dot { width: 7px; height: 7px; background: var(--success); border-radius: 50%; animation: blink 1.2s infinite; }
+        .header {
+            position: sticky; top: 0; z-index: 10; padding: 12px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5,5,16,0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,215,0,0.1);
+        }
+        .logo { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+        .logo-svg { width: 56px; height: 56px; flex-shrink: 0; }
+        .logo-text h1 {
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; font-weight: 400;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; line-height: 1;
+        }
+        .logo-text span {
+            font-size: 0.65rem; color: var(--text-muted); font-weight: 500;
+            letter-spacing: 3px; text-transform: uppercase; display: block;
+        }
+        .nav-tabs { display: flex; gap: 3px; background: var(--glass); padding: 3px; border-radius: 10px; border: 1px solid var(--glass-border); }
+        .nav-tab { padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.78rem; transition: all 0.3s; border: none; background: transparent; color: var(--text-muted); font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        .nav-tab:hover { color: var(--gold); } .nav-tab.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--black); box-shadow: 0 4px 20px rgba(255,215,0,0.25); }
+        .hero { position: relative; z-index: 5; text-align: center; padding: 40px 20px 30px; }
+        .hero h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; font-weight: 400; background: linear-gradient(135deg, var(--gold), #fff, var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; text-shadow: 0 0 40px rgba(255,215,0,0.15); letter-spacing: 3px; }
+        .hero p { font-size: 1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 20px; }
+        .ai-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.03)); border: 1px solid rgba(255,215,0,0.2); padding: 6px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--gold); animation: pulse 2.5s infinite; margin-bottom: 16px; }
+        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.2); } 50% { box-shadow: 0 0 20px 5px rgba(255,215,0,0.06); } }
+        .ai-badge .dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: blink 1.2s infinite; }
         @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-        .countdown { display: flex; justify-content: center; gap: 16px; margin-bottom: 35px; }
-        .countdown-item { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 18px 25px; text-align: center; backdrop-filter: blur(10px); min-width: 75px; }
-        .countdown-item .number { font-size: 2.2rem; font-weight: 800; color: var(--accent); display: block; }
-        .countdown-item .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .countdown { display: flex; justify-content: center; gap: 14px; margin-bottom: 30px; }
+        .countdown-item { background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(255,215,0,0.02)); border: 1px solid rgba(255,215,0,0.12); border-radius: 14px; padding: 16px 22px; text-align: center; backdrop-filter: blur(10px); min-width: 72px; position: relative; overflow: hidden; }
+        .countdown-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .countdown-item .number { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; font-weight: 400; color: var(--gold); display: block; letter-spacing: 2px; }
+        .countdown-item .label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
         .main-content { position: relative; z-index: 5; max-width: 1400px; margin: 0 auto; padding: 0 20px 60px; }
-        .section-title { display: flex; align-items: center; gap: 12px; margin: 35px 0 22px; font-size: 1.4rem; font-weight: 700; }
-        .section-title .icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
-        .match-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 22px; backdrop-filter: blur(10px); transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .match-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--success), var(--accent)); opacity: 0; transition: opacity 0.3s; }
-        .match-card:hover { transform: translateY(-4px); border-color: rgba(233,69,96,0.25); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .section-title { display: flex; align-items: center; gap: 12px; margin: 35px 0 22px; font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; font-weight: 400; letter-spacing: 1px; color: var(--gold); }
+        .section-title .icon { width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
+        .match-card {
+            background: linear-gradient(135deg, rgba(20,20,40,0.6), rgba(10,10,26,0.8));
+            border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px;
+            backdrop-filter: blur(10px); transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .match-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,215,0,0.03), transparent, rgba(255,215,0,0.03), transparent);
+            animation: rotate-glow 8s linear infinite; opacity: 0; transition: opacity 0.5s;
+        }
         .match-card:hover::before { opacity: 1; }
-        .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--glass-border); }
-        .match-group { font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; background: rgba(233,69,96,0.15); color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
-        .match-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
-        .match-teams { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
-        .team { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
-        .team img { width: 46px; height: 32px; border-radius: 4px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .team-name { font-size: 0.8rem; font-weight: 600; text-align: center; }
-        .vs { font-size: 1.1rem; font-weight: 800; color: var(--accent); padding: 0 12px; }
-        .match-prediction { background: linear-gradient(135deg, rgba(0,217,255,0.04), rgba(233,69,96,0.04)); border: 1px solid rgba(0,217,255,0.12); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-        .prediction-label { font-size: 0.65rem; color: var(--success); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+        @keyframes rotate-glow { to { transform: rotate(360deg); } }
+        .match-card:hover { transform: translateY(-5px); border-color: rgba(255,215,0,0.2); box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+        .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,215,0,0.08); }
+        .match-group { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; font-weight: 400; padding: 4px 12px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,215,0,0.05)); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
+        .match-date { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+        .match-teams { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; position: relative; }
+        .team-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; position: relative; }
+        .team-avatar { width: 56px; height: 56px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .team-avatar .orbit-ring { position: absolute; border-radius: 50%; border: 2px solid var(--rc, var(--gold)); opacity: 0.5; animation: orbit-spin var(--rd, 3s) linear infinite; pointer-events: none; }
+        .team-avatar .orbit-ring:nth-child(1) { width: 62px; height: 62px; --rc: var(--gold); --rd: 4s; }
+        .team-avatar .orbit-ring:nth-child(2) { width: 74px; height: 74px; --rc: var(--usa-blue); --rd: 3s; animation-direction: reverse; }
+        .team-avatar .orbit-ring:nth-child(3) { width: 86px; height: 86px; --rc: rgba(255,255,255,0.3); --rd: 5s; }
+        .team-avatar img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.4); position: relative; z-index: 1; border: 2px solid rgba(255,215,0,0.2); }
+        @keyframes orbit-spin { to { transform: rotate(360deg); } }
+        .team-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 400; text-align: center; letter-spacing: 1px; }
+        .vs-badge { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; font-weight: 400; color: var(--gold); padding: 0 16px; text-shadow: 0 0 20px rgba(255,215,0,0.2); }
+        .match-prediction { background: linear-gradient(135deg, rgba(255,215,0,0.04), rgba(0,217,255,0.04)); border: 1px solid rgba(255,215,0,0.1); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+        .prediction-label { font-size: 0.6rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
         .prediction-scores { display: flex; justify-content: space-between; align-items: center; }
         .prediction-score { text-align: center; }
-        .prediction-score .score { font-size: 1.6rem; font-weight: 800; color: var(--success); }
-        .prediction-score .prob { font-size: 0.7rem; color: var(--text-muted); }
+        .prediction-score .score { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; font-weight: 400; color: var(--gold); letter-spacing: 2px; }
+        .prediction-score .prob { font-size: 0.65rem; color: var(--text-muted); }
         .prediction-winner { text-align: center; padding: 0 12px; }
-        .prediction-winner .winner-text { font-size: 0.75rem; font-weight: 700; color: var(--accent-light); }
-        .prediction-winner .confidence { font-size: 0.65rem; color: var(--text-muted); }
-        .match-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .stat-item { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 7px 10px; background: rgba(255,255,255,0.02); border-radius: 6px; }
+        .prediction-winner .winner-text { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--gold); letter-spacing: 1px; }
+        .prediction-winner .confidence { font-size: 0.6rem; color: var(--text-muted); }
+        .match-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .stat-item { display: flex; justify-content: space-between; font-size: 0.72rem; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid rgba(255,255,255,0.03); }
         .stat-item .stat-label { color: var(--text-muted); } .stat-item .stat-value { font-weight: 600; color: var(--gold); }
-        .predict-btn { width: 100%; margin-top: 12px; padding: 11px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border: none; border-radius: 10px; color: #fff; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 7px; }
-        .predict-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(233,69,96,0.25); }
+        .predict-btn {
+            width: 100%; margin-top: 14px; padding: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: none; border-radius: 10px; color: var(--black); font-weight: 800;
+            font-size: 0.85rem; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
+        }
+        .predict-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,215,0,0.25); }
         .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-        .group-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; overflow: hidden; backdrop-filter: blur(10px); }
-        .group-header { padding: 18px 22px; background: linear-gradient(135deg, rgba(233,69,96,0.15), rgba(0,217,255,0.08)); border-bottom: 1px solid var(--glass-border); }
-        .group-header h3 { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        .group-header h3 .group-letter { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
-        .group-teams { padding: 12px; }
-        .group-team-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; transition: background 0.2s; }
-        .group-team-row:hover { background: rgba(255,255,255,0.03); }
-        .group-team-row .position { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.08); }
-        .group-team-row .position.top { background: rgba(255,215,0,0.15); color: var(--gold); }
+        .group-card { background: linear-gradient(135deg, rgba(20,20,40,0.6), rgba(10,10,26,0.8)); border: 1px solid var(--glass-border); border-radius: 18px; overflow: hidden; backdrop-filter: blur(10px); transition: all 0.3s; }
+        .group-card:hover { border-color: rgba(255,215,0,0.15); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .group-header { padding: 16px 20px; background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02)); border-bottom: 1px solid rgba(255,215,0,0.08); }
+        .group-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; font-weight: 400; display: flex; align-items: center; gap: 10px; color: var(--gold); letter-spacing: 1px; }
+        .group-header h3 .group-letter { width: 32px; height: 32px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--black); }
+        .group-teams { padding: 10px; }
+        .group-team-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; transition: background 0.2s; }
+        .group-team-row:hover { background: rgba(255,215,0,0.03); }
+        .group-team-row .position { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.06); color: var(--text-muted); }
+        .group-team-row .position.top { background: rgba(255,215,0,0.12); color: var(--gold); }
         .group-team-row img { width: 28px; height: 19px; border-radius: 3px; object-fit: cover; }
         .group-team-row .team-info { flex: 1; }
-        .group-team-row .team-info .name { font-size: 0.85rem; font-weight: 600; }
-        .group-team-row .team-info .stats { font-size: 0.65rem; color: var(--text-muted); }
-        .group-team-row .points { font-size: 0.95rem; font-weight: 800; color: var(--accent); }
+        .group-team-row .team-info .name { font-size: 0.82rem; font-weight: 600; }
+        .group-team-row .team-info .stats { font-size: 0.62rem; color: var(--text-muted); }
+        .group-team-row .points { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 400; color: var(--gold); }
         .bracket-container { overflow-x: auto; padding: 15px 0; }
-        .bracket { display: flex; gap: 35px; min-width: 1100px; }
-        .bracket-round { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 15px; }
-        .bracket-round-title { text-align: center; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
-        .bracket-match { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 10px; padding: 12px; min-width: 180px; position: relative; }
-        .bracket-team { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+        .bracket { display: flex; gap: 40px; min-width: 1100px; }
+        .bracket-round { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 12px; }
+        .bracket-round-title { text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; font-weight: 400; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 8px; }
+        .bracket-match { background: linear-gradient(135deg, rgba(20,20,40,0.5), rgba(10,10,26,0.7)); border: 1px solid var(--glass-border); border-radius: 12px; padding: 12px; min-width: 180px; position: relative; transition: all 0.3s; }
+        .bracket-match:hover { border-color: rgba(255,215,0,0.2); }
+        .bracket-match::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
+        .bracket-team { display: flex; align-items: center; gap: 8px; padding: 5px 0; }
         .bracket-team img { width: 22px; height: 15px; border-radius: 3px; object-fit: cover; }
-        .bracket-team .name { font-size: 0.75rem; font-weight: 600; flex: 1; }
-        .bracket-team .score { font-size: 0.9rem; font-weight: 800; color: var(--accent); }
+        .bracket-team .name { font-size: 0.72rem; font-weight: 600; flex: 1; }
+        .bracket-team .score { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 400; color: var(--gold); }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; margin-bottom: 25px; }
-        .stat-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 22px; text-align: center; backdrop-filter: blur(10px); transition: all 0.3s; }
-        .stat-card:hover { transform: translateY(-3px); border-color: rgba(233,69,96,0.2); }
-        .stat-card .icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 12px; }
-        .stat-card .value { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
-        .stat-card .label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
-        .top-teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-        .top-team-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 18px; text-align: center; backdrop-filter: blur(10px); transition: all 0.3s; cursor: pointer; }
-        .top-team-card:hover { transform: scale(1.04); border-color: var(--accent); }
-        .top-team-card .rank { font-size: 0.65rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-        .top-team-card img { width: 55px; height: 37px; border-radius: 5px; object-fit: cover; margin-bottom: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-        .top-team-card .name { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
-        .top-team-card .win-prob { font-size: 1.4rem; font-weight: 800; color: var(--success); }
-        .top-team-card .win-label { font-size: 0.65rem; color: var(--text-muted); }
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .stat-card {
+            background: linear-gradient(135deg, rgba(20,20,40,0.5), rgba(10,10,26,0.7));
+            border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px;
+            text-align: center; backdrop-filter: blur(10px); transition: all 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
+        .stat-card:hover { transform: translateY(-4px); border-color: rgba(255,215,0,0.15); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .stat-card .icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 12px; }
+        .stat-card .value { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; font-weight: 400; color: var(--gold); margin-bottom: 4px; letter-spacing: 2px; }
+        .stat-card .label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+        .top-teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .top-team-card {
+            background: linear-gradient(135deg, rgba(20,20,40,0.6), rgba(10,10,26,0.8));
+            border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px 18px;
+            text-align: center; backdrop-filter: blur(10px); transition: all 0.4s;
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .top-team-card:hover { transform: translateY(-6px) scale(1.02); border-color: var(--gold); box-shadow: 0 20px 50px rgba(255,215,0,0.1); }
+        .top-team-card .splatter { position: absolute; border-radius: 50%; pointer-events: none; opacity: 0.1; z-index: 0; }
+        .top-team-card .rank { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; font-weight: 400; color: var(--gold); margin-bottom: 10px; letter-spacing: 2px; position: relative; z-index: 1; }
+        .top-team-card .ball-container { width: 72px; height: 72px; margin: 0 auto 12px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .top-team-card .ball-container svg { width: 52px; height: 52px; position: relative; z-index: 1; }
+        .top-team-card .ball-container .orbit-ring { position: absolute; border-radius: 50%; border: 2px solid var(--rc, var(--gold)); opacity: 0.4; animation: orbit-spin var(--rd, 3s) linear infinite; pointer-events: none; }
+        .top-team-card .ball-container .orbit-ring:nth-child(1) { width: 68px; height: 68px; --rc: var(--gold); --rd: 4s; }
+        .top-team-card .ball-container .orbit-ring:nth-child(2) { width: 82px; height: 82px; --rc: var(--usa-blue); --rd: 3s; animation-direction: reverse; }
+        .top-team-card .ball-container .orbit-ring:nth-child(3) { width: 96px; height: 96px; --rc: rgba(255,255,255,0.15); --rd: 5s; }
+        .top-team-card .name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; font-weight: 400; color: #fff; margin-bottom: 2px; letter-spacing: 2px; position: relative; z-index: 1; }
+        .top-team-card .subtitle { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; position: relative; z-index: 1; }
+        .top-team-card .win-prob { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; font-weight: 400; color: var(--gold); letter-spacing: 2px; position: relative; z-index: 1; }
+        .top-team-card .win-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; position: relative; z-index: 1; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(16px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .modal-overlay.active { display: flex; }
-        .modal { background: linear-gradient(135deg, #12122a, #1a1a3e); border: 1px solid var(--glass-border); border-radius: 22px; padding: 35px; max-width: 580px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; animation: modalIn 0.35s ease; }
-        @keyframes modalIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--text-muted); transition: all 0.3s; }
-        .modal-close:hover { background: var(--accent); color: #fff; }
-        .modal h2 { font-size: 1.4rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .modal { background: linear-gradient(135deg, #0D1B2A, #0A0A1A); border: 1px solid rgba(255,215,0,0.15); border-radius: 22px; padding: 35px; max-width: 580px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; animation: modalIn 0.35s ease; }
+        @keyframes modalIn { from { transform: scale(0.9) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--text-muted); transition: all 0.3s; }
+        .modal-close:hover { background: var(--gold); color: var(--black); }
+        .modal h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; color: var(--gold); letter-spacing: 1px; }
         .modal-content { font-size: 0.88rem; line-height: 1.6; }
         .modal-content p { margin-bottom: 12px; color: var(--text-muted); }
-        .modal-content .highlight { color: var(--success); font-weight: 600; }
+        .modal-content .highlight { color: var(--gold); font-weight: 600; }
         .modal-content .warning { color: var(--warning); font-weight: 600; }
-        .analysis-section { background: var(--glass); border-radius: 10px; padding: 16px; margin-bottom: 12px; border-left: 3px solid var(--accent); }
-        .analysis-section h4 { font-size: 0.85rem; margin-bottom: 8px; color: var(--accent-light); }
+        .analysis-section { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; margin-bottom: 12px; border-left: 3px solid var(--gold); }
+        .analysis-section h4 { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; font-weight: 400; margin-bottom: 8px; color: var(--gold); letter-spacing: 1px; }
         .analysis-section ul { list-style: none; padding: 0; }
         .analysis-section ul li { padding: 4px 0; padding-left: 18px; position: relative; font-size: 0.82rem; color: var(--text-muted); }
-        .analysis-section ul li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+        .analysis-section ul li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); }
+        .analysis-section ul li strong { color: var(--text); }
         .prob-bars { display: flex; flex-direction: column; gap: 8px; margin: 18px 0; }
         .prob-bar-item { display: flex; align-items: center; gap: 10px; }
-        .prob-bar-item .label { width: 75px; font-size: 0.75rem; font-weight: 600; }
+        .prob-bar-item .label { width: 75px; font-size: 0.72rem; font-weight: 600; }
         .prob-bar-item .bar-container { flex: 1; height: 28px; background: rgba(255,255,255,0.04); border-radius: 7px; overflow: hidden; position: relative; }
         .prob-bar-item .bar-fill { height: 100%; border-radius: 7px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.7rem; font-weight: 700; transition: width 1s ease; }
-        .prob-bar-item .bar-fill.home { background: linear-gradient(90deg, var(--accent), var(--accent-light)); }
+        .prob-bar-item .bar-fill.home { background: linear-gradient(90deg, var(--gold), var(--gold-dark)); }
         .prob-bar-item .bar-fill.draw { background: linear-gradient(90deg, var(--warning), #ffcc00); }
         .prob-bar-item .bar-fill.away { background: linear-gradient(90deg, var(--success), #00ff88); }
-        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,5,16,0.95); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s; }
+        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5,5,16,0.96); z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s; }
         .loading-overlay.hidden { opacity: 0; pointer-events: none; }
-        .loading-spinner { width: 55px; height: 55px; border: 3px solid rgba(233,69,96,0.2); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 18px; }
+        .loading-spinner { width: 55px; height: 55px; border: 3px solid rgba(255,215,0,0.15); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 18px; }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text { font-size: 0.95rem; color: var(--text-muted); animation: pulse-text 1.5s infinite; }
+        .loading-text { font-size: 0.9rem; color: var(--text-muted); animation: pulse-text 1.5s infinite; font-family: 'Bebas Neue', sans-serif; letter-spacing: 3px; }
         @keyframes pulse-text { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
         .section-content { display: none; }
         .section-content.active { display: block; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .splatter-blob { position: absolute; border-radius: 50%; pointer-events: none; opacity: 0.08; z-index: 0; }
         @media (max-width: 768px) {
-            .header { flex-direction: column; gap: 12px; padding: 12px; }
+            .header { flex-direction: column; gap: 10px; padding: 10px; }
+            .logo-svg { width: 44px; height: 44px; }
+            .logo-text h1 { font-size: 1.4rem; }
             .nav-tabs { flex-wrap: wrap; justify-content: center; }
-            .hero h2 { font-size: 1.7rem; }
-            .countdown { gap: 8px; }
-            .countdown-item { padding: 12px 16px; min-width: 55px; }
+            .hero h2 { font-size: 2.2rem; }
+            .countdown { gap: 6px; flex-wrap: wrap; }
+            .countdown-item { padding: 10px 14px; min-width: 60px; }
             .countdown-item .number { font-size: 1.6rem; }
             .cards-grid { grid-template-columns: 1fr; }
             .groups-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .top-teams { grid-template-columns: repeat(2, 1fr); }
+            .top-teams { grid-template-columns: repeat(2, 1fr); gap: 14px; }
             .bracket { min-width: 700px; }
         }
+        @media (max-width: 480px) {
+            .top-teams { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .top-team-card { padding: 16px 12px; }
+            .top-team-card .ball-container { width: 56px; height: 56px; }
+            .top-team-card .ball-container svg { width: 40px; height: 40px; }
+            .top-team-card .ball-container .orbit-ring:nth-child(1) { width: 54px; height: 54px; }
+            .top-team-card .ball-container .orbit-ring:nth-child(2) { width: 64px; height: 64px; }
+            .top-team-card .ball-container .orbit-ring:nth-child(3) { width: 74px; height: 74px; }
+            .top-team-card .name { font-size: 1rem; }
+            .top-team-card .win-prob { font-size: 1.2rem; }
+            .team-avatar { width: 44px; height: 44px; }
+            .team-avatar img { width: 38px; height: 38px; }
+            .team-avatar .orbit-ring:nth-child(1) { width: 50px; height: 50px; }
+            .team-avatar .orbit-ring:nth-child(2) { width: 60px; height: 60px; }
+            .team-avatar .orbit-ring:nth-child(3) { width: 70px; height: 70px; }
+            .team-name { font-size: 0.85rem; }
+            .vs-badge { font-size: 1.1rem; padding: 0 10px; }
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: var(--primary); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-light); }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
     </style>
 </head>
 <body>
@@ -167,18 +253,66 @@
 </div>
 <header class="header">
     <div class="logo">
-        <div class="logo-icon">🏆</div>
+        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFE44D"/>
+                    <stop offset="50%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#B8960F"/>
+                </linearGradient>
+                <linearGradient id="trophyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#FFF8B0"/>
+                    <stop offset="40%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#B8860B"/>
+                </linearGradient>
+            </defs>
+            <!-- Soccer ball background -->
+            <circle cx="50" cy="52" r="38" fill="white" stroke="#1a1a1a" stroke-width="1.5"/>
+            <path d="M50,14 L62,28 L58,44 L42,44 L38,28 Z" fill="#1a1a1a"/>
+            <path d="M50,14 L62,28 L72,24 L65,36 Z" fill="#1a1a1a"/>
+            <path d="M38,28 L28,24 L35,36 Z" fill="#1a1a1a"/>
+            <path d="M42,44 L30,52 L38,62 Z" fill="#1a1a1a"/>
+            <path d="M58,44 L70,52 L62,62 Z" fill="#1a1a1a"/>
+            <path d="M50,14 L42,44 L50,52 L58,44 Z" fill="#1a1a1a" opacity="0.8"/>
+            <!-- Trophy -->
+            <path d="M46,52 C46,58 44,66 42,70 L58,70 C56,66 54,58 54,52 Z" fill="url(#trophyGrad)" stroke="#B8860B" stroke-width="0.8"/>
+            <rect x="40" y="70" width="20" height="4" rx="1" fill="url(#goldGrad)" stroke="#B8860B" stroke-width="0.5"/>
+            <rect x="36" y="74" width="28" height="3" rx="1" fill="url(#goldGrad)" stroke="#B8860B" stroke-width="0.5"/>
+            <rect x="32" y="77" width="36" height="3" rx="1" fill="url(#goldGrad)" stroke="#B8860B" stroke-width="0.5"/>
+            <circle cx="50" cy="42" r="8" fill="url(#goldGrad)" stroke="#B8860B" stroke-width="0.8"/>
+            <!-- Mexico flag (left) -->
+            <rect x="18" y="42" width="10" height="16" rx="1" fill="#006847"/>
+            <rect x="21" y="42" width="4" height="16" fill="white"/>
+            <rect x="25" y="42" width="3" height="16" fill="#CE1126"/>
+            <!-- USA flag (top-right) -->
+            <rect x="55" y="22" width="14" height="10" rx="1" fill="#B22234" opacity="0.9"/>
+            <rect x="55" y="22" width="6" height="5" fill="#3C3B6E"/>
+            <rect x="55" y="22" width="6" height="5" fill="#3C3B6E"/>
+            <!-- Canada flag (bottom-right) -->
+            <rect x="60" y="60" width="12" height="8" rx="1" fill="#FF0000" opacity="0.9"/>
+            <rect x="63" y="60" width="6" height="8" fill="white"/>
+            <rect x="65" y="61" width="2" height="6" fill="#FF0000"/>
+            <!-- Decorative stars -->
+            <text x="12" y="18" font-size="7" fill="var(--gold)">✦</text>
+            <text x="80" y="14" font-size="5" fill="var(--gold)">✦</text>
+            <text x="85" y="50" font-size="6" fill="var(--gold)">✦</text>
+            <text x="8" y="70" font-size="4" fill="var(--gold)">✦</text>
+            <text x="72" y="84" font-size="5" fill="var(--gold)">✦</text>
+            <!-- Triangles -->
+            <polygon points="16,22 20,14 24,22" fill="#3C3B6E" opacity="0.5"/>
+            <polygon points="78,72 82,64 86,72" fill="#006847" opacity="0.4"/>
+        </svg>
         <div class="logo-text">
             <h1>Copa 2026</h1>
-            <span>Previsão de Resultados com IA</span>
+            <span>Powered by DeepSeek AI</span>
         </div>
     </div>
     <nav class="nav-tabs">
-        <button class="nav-tab active" onclick="showSection('matches', this)">📅 Jogos</button>
-        <button class="nav-tab" onclick="showSection('groups', this)">📊 Grupos</button>
-        <button class="nav-tab" onclick="showSection('knockout', this)">⚔️ Mata-Mata</button>
-        <button class="nav-tab" onclick="showSection('predictions', this)">🤖 Previsões IA</button>
-        <button class="nav-tab" onclick="showSection('stats', this)">📈 Estatísticas</button>
+        <button class="nav-tab active" onclick="showSection('matches', this)">Jogos</button>
+        <button class="nav-tab" onclick="showSection('groups', this)">Grupos</button>
+        <button class="nav-tab" onclick="showSection('knockout', this)">Mata-Mata</button>
+        <button class="nav-tab" onclick="showSection('predictions', this)">Previsões</button>
+        <button class="nav-tab" onclick="showSection('stats', this)">Estatísticas</button>
     </nav>
 </header>
 <section class="hero">
@@ -393,6 +527,37 @@ const knockoutData = [
     {"round":"Final","matches":[{"id":102,"home":"Venc. SF1","away":"Venc. SF2","date":"19/07"}]}
 ];
 
+const teamColors = {
+    'Mexico': ['#006847','#FFFFFF','#CE1126'], 'South Africa': ['#DE3831','#FFFFFF','#002395'],
+    'South Korea': ['#FFFFFF','#003478','#E60000'], 'Czech Republic': ['#FFFFFF','#D7141A','#11457E'],
+    'Canada': ['#FF0000','#FFFFFF','#FF0000'], 'Bosnia and Herzegovina': ['#002395','#FFCC00','#FFFFFF'],
+    'Qatar': ['#8C1B1B','#FFFFFF','#FFFFFF'], 'Switzerland': ['#FF0000','#FFFFFF','#D52B1E'],
+    'Brazil': ['#009739','#FFDF00','#002776'], 'Morocco': ['#C1272D','#FFFFFF','#006233'],
+    'Haiti': ['#00209F','#FFFFFF','#D21034'], 'Scotland': ['#005EB8','#FFFFFF','#1A1A1A'],
+    'United States': ['#3C3B6E','#FFFFFF','#B22234'], 'Paraguay': ['#D52B1E','#FFFFFF','#0038A8'],
+    'Australia': ['#00008B','#FF0000','#FFFFFF'], 'Turkey': ['#E30A17','#FFFFFF','#003DA5'],
+    'Germany': ['#000000','#DD0000','#FFCC00'], 'Curaçao': ['#003DA5','#FFFFFF','#FFCC00'],
+    'Ivory Coast': ['#F77F00','#FFFFFF','#009E60'], 'Ecuador': ['#FFD100','#003DA5','#ED1C24'],
+    'Netherlands': ['#FF6600','#FFFFFF','#003DA5'], 'Japan': ['#FFFFFF','#BC002D','#1A1A1A'],
+    'Sweden': ['#005BA0','#FECC00','#FFFFFF'], 'Tunisia': ['#E70013','#FFFFFF','#1A1A1A'],
+    'Belgium': ['#000000','#FFE200','#E31837'], 'Egypt': ['#C8102E','#FFFFFF','#000000'],
+    'Iran': ['#239F40','#FFFFFF','#DA0000'], 'New Zealand': ['#000000','#FFFFFF','#000000'],
+    'Spain': ['#C60B1E','#FFC400','#C60B1E'], 'Cape Verde': ['#003893','#FFFFFF','#DE2910'],
+    'Saudi Arabia': ['#006C35','#FFFFFF','#00543D'], 'Uruguay': ['#003DA5','#FFFFFF','#FED100'],
+    'France': ['#002395','#FFFFFF','#ED2939'], 'Senegal': ['#00853F','#FDEF42','#E31B23'],
+    'Iraq': ['#CE1126','#FFFFFF','#007A3D'], 'Norway': ['#BA0C2F','#FFFFFF','#BA0C2F'],
+    'Argentina': ['#75AADB','#FFFFFF','#FCBF49'], 'Algeria': ['#007229','#FFFFFF','#D21034'],
+    'Austria': ['#ED2939','#FFFFFF','#ED2939'], 'Jordan': ['#CE1126','#FFFFFF','#007A3D'],
+    'Portugal': ['#006600','#FF0000','#FFCC00'], 'Democratic Republic of the Congo': ['#007FFF','#CE1126','#CE1126'],
+    'Uzbekistan': ['#0099B5','#FFFFFF','#00AA00'], 'Colombia': ['#FCD116','#003893','#CE1126'],
+    'England': ['#FFFFFF','#CE1126','#003DA5'], 'Croatia': ['#FFFFFF','#ED1C24','#171796'],
+    'Ghana': ['#CE1126','#FCD116','#006B3F'], 'Panama': ['#00529F','#FFFFFF','#CE1126']
+};
+
+function getTeamColors(name) {
+    return teamColors[name] || ['#FFD700','#FFD700','#FFD700'];
+}
+
 function getTeamStrength(name) {
     const team = teamsData.find(t => t.name === name);
     return team ? team.strength : 70;
@@ -404,6 +569,20 @@ function getTeamFlag(name) {
 function getTeamFifa(name) {
     const team = teamsData.find(t => t.name === name);
     return team ? team.fifa : '';
+}
+
+// Ball SVG template
+function ballSvg(size) {
+    return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="48" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+        <path d="M50,10 L64,26 L60,44 L40,44 L36,26 Z" fill="#1a1a1a"/>
+        <path d="M50,10 L64,26 L76,22 L68,36 Z" fill="#1a1a1a"/>
+        <path d="M36,26 L24,22 L32,36 Z" fill="#1a1a1a"/>
+        <path d="M40,44 L26,54 L36,66 Z" fill="#1a1a1a"/>
+        <path d="M60,44 L74,54 L64,66 Z" fill="#1a1a1a"/>
+        <path d="M50,90 L36,74 L40,56 L60,56 L64,74 Z" fill="#1a1a1a"/>
+        <circle cx="50" cy="50" r="4" fill="#1a1a1a"/>
+    </svg>`;
 }
 
 // ===== PROFESSIONAL PREDICTION MODEL =====
@@ -670,6 +849,8 @@ function renderMatches() {
     const grid = document.getElementById('matches-grid');
     grid.innerHTML = matchesData.map((match, i) => {
         const pred = calculatePrediction(match.home, match.away);
+        const hc = getTeamColors(match.home);
+        const ac = getTeamColors(match.away);
         return `
         <div class="match-card" style="animation: fadeIn 0.5s ease ${i * 0.05}s both;">
             <div class="match-header">
@@ -677,13 +858,23 @@ function renderMatches() {
                 <span class="match-date">${match.date} ${match.time}</span>
             </div>
             <div class="match-teams">
-                <div class="team">
-                    <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
+                <div class="team-wrap">
+                    <div class="team-avatar">
+                        <div class="orbit-ring" style="--rc:${hc[0]};--rd:4s"></div>
+                        <div class="orbit-ring" style="--rc:${hc[1]};--rd:3s"></div>
+                        <div class="orbit-ring" style="--rc:${hc[2]};--rd:5s"></div>
+                        <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
+                    </div>
                     <span class="team-name">${match.home}</span>
                 </div>
-                <span class="vs">VS</span>
-                <div class="team">
-                    <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
+                <span class="vs-badge">VS</span>
+                <div class="team-wrap">
+                    <div class="team-avatar">
+                        <div class="orbit-ring" style="--rc:${ac[0]};--rd:4s"></div>
+                        <div class="orbit-ring" style="--rc:${ac[1]};--rd:3s"></div>
+                        <div class="orbit-ring" style="--rc:${ac[2]};--rd:5s"></div>
+                        <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
+                    </div>
                     <span class="team-name">${match.away}</span>
                 </div>
             </div>
@@ -702,7 +893,7 @@ function renderMatches() {
                 <div class="stat-item"><span class="stat-label">Gols Esperados</span><span class="stat-value">${pred.homeScore + pred.awayScore}</span></div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                🤖 Análise Completa DeepSeek
+                🔍 Análise DeepSeek
             </button>
         </div>`;
     }).join('');
@@ -766,11 +957,26 @@ function renderPredictions() {
     topContainer.innerHTML = topTeams.map((team, i) => {
         const mcProb = monteCarloProbs[team.name];
         const winProb = mcProb !== undefined ? Math.round(mcProb) : Math.round((team.strength / 100) * 25);
+        const cols = getTeamColors(team.name);
+        const blobs = Array.from({length:5}, (_, bi) => {
+            const size = 20 + Math.random() * 50;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const ci = bi % 3;
+            return `<div class="splatter-blob" style="width:${size}px;height:${size}px;background:${cols[ci]};top:${y}%;left:${x}%;transform:translate(-50%,-50%);border-radius:${40+Math.random()*60}% ${30+Math.random()*40}% ${50+Math.random()*30}% ${20+Math.random()*50}%;"></div>`;
+        }).join('');
         return `
         <div class="top-team-card" style="animation: fadeIn 0.5s ease ${i * 0.08}s both;">
-            <div class="rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`} Favorito</div>
-            <img src="${team.flag}" alt="${team.name}" loading="lazy">
+            ${blobs}
+            <div class="rank">${i === 0 ? '🏆 TOP 1' : i === 1 ? '🥈 TOP 2' : i === 2 ? '🥉 TOP 3' : `#${i + 1}`}</div>
+            <div class="ball-container">
+                ${ballSvg(52)}
+                <div class="orbit-ring" style="--rc:${cols[0]};--rd:4s"></div>
+                <div class="orbit-ring" style="--rc:${cols[1]};--rd:3s"></div>
+                <div class="orbit-ring" style="--rc:${cols[2]};--rd:5s"></div>
+            </div>
             <div class="name">${team.name}</div>
+            <div class="subtitle">World Cup 2026</div>
             <div class="win-prob">${winProb}%</div>
             <div class="win-label">chance de título</div>
         </div>`;
@@ -784,6 +990,8 @@ function renderPredictions() {
 
     predGrid.innerHTML = featuredMatches.map((match, i) => {
         const pred = calculatePrediction(match.home, match.away);
+        const hc = getTeamColors(match.home);
+        const ac = getTeamColors(match.away);
         return `
         <div class="match-card" style="animation: fadeIn 0.5s ease ${i * 0.08}s both;">
             <div class="match-header">
@@ -791,13 +999,23 @@ function renderPredictions() {
                 <span class="match-date">${match.date}</span>
             </div>
             <div class="match-teams">
-                <div class="team">
-                    <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
+                <div class="team-wrap">
+                    <div class="team-avatar">
+                        <div class="orbit-ring" style="--rc:${hc[0]};--rd:4s"></div>
+                        <div class="orbit-ring" style="--rc:${hc[1]};--rd:3s"></div>
+                        <div class="orbit-ring" style="--rc:${hc[2]};--rd:5s"></div>
+                        <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
+                    </div>
                     <span class="team-name">${match.home}</span>
                 </div>
-                <span class="vs">VS</span>
-                <div class="team">
-                    <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
+                <span class="vs-badge">VS</span>
+                <div class="team-wrap">
+                    <div class="team-avatar">
+                        <div class="orbit-ring" style="--rc:${ac[0]};--rd:4s"></div>
+                        <div class="orbit-ring" style="--rc:${ac[1]};--rd:3s"></div>
+                        <div class="orbit-ring" style="--rc:${ac[2]};--rd:5s"></div>
+                        <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
+                    </div>
                     <span class="team-name">${match.away}</span>
                 </div>
             </div>
@@ -810,7 +1028,7 @@ function renderPredictions() {
                 </div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                🤖 Ver Análise DeepSeek
+                🔍 Análise DeepSeek
             </button>
         </div>`;
     }).join('');
@@ -839,11 +1057,11 @@ async function showAnalysis(home, away) {
     const content = document.getElementById('modal-content');
     const title = document.getElementById('modal-title');
 
-    title.innerHTML = `🤖 Análise DeepSeek: ${home} vs ${away}`;
+    title.innerHTML = `🔮 Análise DeepSeek: ${home} vs ${away}`;
     content.innerHTML = `
         <div style="text-align: center; padding: 40px 20px;">
             <div class="loading-spinner" style="margin: 0 auto 18px;"></div>
-            <div style="color: var(--text-muted);">Consultando DeepSeek AI...</div>
+            <div style="color: var(--text-muted); font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Consultando DeepSeek AI...</div>
         </div>
     `;
     modal.classList.add('active');
@@ -869,53 +1087,57 @@ async function showAnalysis(home, away) {
     const awayFlag = getTeamFlag(away);
 
     content.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 25px; padding: 20px; background: var(--glass); border-radius: 14px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 28px; margin-bottom: 22px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 14px; border: 1px solid rgba(255,215,0,0.08);">
             <div style="text-align: center;">
-                <img src="${homeFlag}" style="width: 60px; height: 40px; border-radius: 5px; margin-bottom: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                <div style="font-weight: 700; font-size: 1rem;">${home}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Força: ${pred.homeStr}/100</div>
+                <div style="display:flex;align-items:center;justify-content:center;margin-bottom:8px;position:relative;width:64px;height:64px;margin:0 auto 8px;">
+                    <img src="${homeFlag}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,215,0,0.2);box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+                </div>
+                <div style="font-weight:700;font-size:1rem;">${home}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted);">Força: ${pred.homeStr}/100</div>
+            </div>
+            <div style="text-align:center;font-family:'Bebas Neue',sans-serif;">
+                <div style="font-size:2.2rem;font-weight:400;color:var(--gold);letter-spacing:3px;">${pred.homeScore} - ${pred.awayScore}</div>
+                <div style="font-size:0.65rem;color:var(--text-muted);letter-spacing:2px;">PLACAR PREVISTO</div>
             </div>
             <div style="text-align: center;">
-                <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">${pred.homeScore} - ${pred.awayScore}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Placar Previsto</div>
-            </div>
-            <div style="text-align: center;">
-                <img src="${awayFlag}" style="width: 60px; height: 40px; border-radius: 5px; margin-bottom: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                <div style="font-weight: 700; font-size: 1rem;">${away}</div>
-                <div style="font-size: 0.75rem; color: var(--text-muted);">Força: ${pred.awayStr}/100</div>
+                <div style="display:flex;align-items:center;justify-content:center;margin-bottom:8px;position:relative;width:64px;height:64px;margin:0 auto 8px;">
+                    <img src="${awayFlag}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,215,0,0.2);box-shadow:0 4px 15px rgba(0,0,0,0.3);">
+                </div>
+                <div style="font-weight:700;font-size:1rem;">${away}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted);">Força: ${pred.awayStr}/100</div>
             </div>
         </div>
 
         <div class="prob-bars">
             <div class="prob-bar-item">
-                <div class="label" style="color: var(--accent-light);">${home}</div>
+                <div class="label" style="color:var(--gold);">${home}</div>
                 <div class="bar-container">
-                    <div class="bar-fill home" style="width: ${pred.homeWin}%; color: #fff;">${pred.homeWin}%</div>
+                    <div class="bar-fill home" style="width:${pred.homeWin}%;color:var(--black);">${pred.homeWin}%</div>
                 </div>
             </div>
             <div class="prob-bar-item">
-                <div class="label" style="color: var(--warning);">Empate</div>
+                <div class="label" style="color:var(--warning);">Empate</div>
                 <div class="bar-container">
-                    <div class="bar-fill draw" style="width: ${pred.draw}%; color: #000;">${pred.draw}%</div>
+                    <div class="bar-fill draw" style="width:${pred.draw}%;color:var(--black);">${pred.draw}%</div>
                 </div>
             </div>
             <div class="prob-bar-item">
-                <div class="label" style="color: var(--success);">${away}</div>
+                <div class="label" style="color:var(--success);">${away}</div>
                 <div class="bar-container">
-                    <div class="bar-fill away" style="width: ${pred.awayWin}%; color: #000;">${pred.awayWin}%</div>
+                    <div class="bar-fill away" style="width:${pred.awayWin}%;color:var(--black);">${pred.awayWin}%</div>
                 </div>
             </div>
         </div>
 
         <div class="analysis-section">
-            <h4>📊 Análise Tática DeepSeek</h4>
+            <h4>📊 Análise Tática</h4>
             <ul>
                 ${analyses.map(a => `<li>${a}</li>`).join('')}
             </ul>
         </div>
 
-        <div class="analysis-section" style="border-left-color: var(--success);">
-            <h4 style="color: var(--success);">🔮 Previsão de Mercado</h4>
+        <div class="analysis-section" style="border-left-color:var(--success);">
+            <h4 style="color:var(--success);">🔮 Previsão de Mercado</h4>
             <ul>
                 <li>Over 2.5 gols: <strong>${pred.homeScore + pred.awayScore > 2 ? 'Sim (65%)' : 'Não (55%)'}</strong></li>
                 <li>Ambas marcam: <strong>${pred.homeScore > 0 && pred.awayScore > 0 ? 'Sim (70%)' : 'Não (60%)'}</strong></li>
@@ -923,8 +1145,8 @@ async function showAnalysis(home, away) {
             </ul>
         </div>
 
-        <div class="analysis-section" style="border-left-color: var(--gold);">
-            <h4 style="color: var(--gold);">⚡ Fatores Decisivos</h4>
+        <div class="analysis-section" style="border-left-color:var(--gold);">
+            <h4 style="color:var(--gold);">⚡ Fatores Decisivos</h4>
             <ul>
                 <li>Diferença de força: <strong>${Math.abs(pred.homeStr - pred.awayStr)} pontos</strong></li>
                 <li>Vantagem local: <strong>+3% (torcida e clima)</strong></li>
@@ -932,7 +1154,7 @@ async function showAnalysis(home, away) {
             </ul>
         </div>
 
-        <p style="text-align: center; margin-top: 20px; font-size: 0.75rem; color: var(--text-muted);">
+        <p style="text-align:center;margin-top:20px;font-size:0.7rem;color:var(--text-muted);letter-spacing:1px;">
             ⚠️ Esta análise é gerada por IA com base em dados históricos e estatísticos. Resultados reais podem variar.
         </p>
     `;
