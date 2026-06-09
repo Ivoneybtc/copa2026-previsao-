@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Copa 2026 - Previsão de Resultados com IA</title>
+    <meta name="application-name" content="Copa 2026">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Copa 2026">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#FFD700">
+    <meta name="msapplication-TileColor" content="#FFD700">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+    <link rel="apple-touch-icon" href="/icons/icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -234,6 +244,18 @@
         }
         .theme-toggle:hover { background: var(--gold); }
         .theme-toggle .theme-icon { font-size: 1rem; line-height: 1; }
+        .pwa-install-btn {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            display: flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: none; border-radius: 50px; padding: 12px 20px;
+            color: var(--black); font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem; letter-spacing: 1px; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+            transition: all 0.3s; animation: fadeIn 0.5s ease;
+        }
+        .pwa-install-btn:hover { transform: scale(1.05); box-shadow: 0 12px 35px rgba(255,215,0,0.4); }
+        .pwa-install-icon { font-size: 1.3rem; }
         @media (max-width: 768px) {
             .header { flex-direction: column; gap: 10px; padding: 10px; }
             .logo-svg { width: 44px; height: 44px; }
@@ -386,6 +408,11 @@
         <div class="stats-grid" id="stats-grid"></div>
     </div>
 </main>
+<button class="pwa-install-btn" id="pwaInstallBtn" style="display:none" onclick="installPWA()">
+    <span class="pwa-install-icon">📲</span>
+    <span class="pwa-install-text">Instalar App</span>
+</button>
+
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
         <button class="modal-close" onclick="closeModal()">✕</button>
@@ -1235,6 +1262,41 @@ function createParticles() {
         p.style.opacity = Math.random() * 0.3 + 0.1;
         container.appendChild(p);
     }
+}
+
+// PWA - deferred install prompt
+let deferredPrompt = null;
+
+// Service Worker registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('pwaInstallBtn');
+    if (btn) btn.style.display = 'flex';
+});
+
+function installPWA() {
+    const btn = document.getElementById('pwaInstallBtn');
+    if (!deferredPrompt) {
+        if (btn) btn.style.display = 'none';
+        return;
+    }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+        deferredPrompt = null;
+        if (btn) btn.style.display = 'none';
+    });
+}
+
+// Detect PWA standalone mode
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    document.getElementById('pwaInstallBtn')?.remove();
 }
 
 // Theme toggle

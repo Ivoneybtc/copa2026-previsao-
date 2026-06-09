@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sem Conexão - Copa 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #050510, #0A0A1A, #0D1B2A);
+      color: #F0F0F0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .offline-card {
+      text-align: center;
+      max-width: 400px;
+      padding: 48px 32px;
+      background: linear-gradient(135deg, rgba(20,20,40,0.6), rgba(10,10,26,0.8));
+      border: 1px solid rgba(255,215,0,0.1);
+      border-radius: 24px;
+    }
+    .icon { font-size: 4rem; margin-bottom: 16px; }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #FFD700;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 0.95rem;
+      color: #909090;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #FFD700, #B8960F);
+      border: none;
+      border-radius: 10px;
+      color: #1A1A1A;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(255,215,0,0.2); }
+    .retry { margin-top: 12px; font-size: 0.8rem; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="offline-card">
+    <div class="icon">📡</div>
+    <h1>Sem Conexão</h1>
+    <p>Você está offline. Conecte-se à internet para ver as previsões da Copa do Mundo 2026.</p>
+    <button class="btn" onclick="location.reload()">Tentar novamente</button>
+    <div class="retry">Toque em "Tentar novamente" quando estiver online</div>
+  </div>
+</body>
+</html>

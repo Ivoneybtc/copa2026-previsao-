@@ -1,0 +1,22 @@
+{
+  "name": "Copa do Mundo 2026 - Previsões com IA",
+  "short_name": "Copa 2026",
+  "description": "Previsões de resultados para a Copa do Mundo 2026 com Inteligência Artificial. Análise tática, estatísticas e probabilidades.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E1A",
+  "theme_color": "#FFD700",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "categories": ["sports", "news", "entertainment"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

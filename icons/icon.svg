@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0E1A"/>
+      <stop offset="100%" stop-color="#050510"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE44D"/>
+      <stop offset="50%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#B8960F"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Outer gold ring -->
+  <circle cx="256" cy="270" r="170" fill="none" stroke="#FFD700" stroke-width="4" opacity="0.3"/>
+  <circle cx="256" cy="270" r="155" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.15"/>
+  <!-- Soccer ball -->
+  <circle cx="256" cy="270" r="120" fill="white" stroke="#1a1a1a" stroke-width="4"/>
+  <path d="M256,150 L300,210 L290,250 L222,250 L212,210 Z" fill="#1a1a1a"/>
+  <path d="M256,150 L300,210 L340,200 L320,240 Z" fill="#1a1a1a"/>
+  <path d="M212,210 L172,200 L192,240 Z" fill="#1a1a1a"/>
+  <path d="M222,250 L180,280 L210,330 Z" fill="#1a1a1a"/>
+  <path d="M290,250 L332,280 L302,330 Z" fill="#1a1a1a"/>
+  <path d="M256,390 L212,330 L222,290 L290,290 L300,330 Z" fill="#1a1a1a"/>
+  <circle cx="256" cy="270" r="12" fill="#1a1a1a"/>
+  <!-- Flag elements around ball -->
+  <rect x="148" y="240" width="28" height="44" rx="2" fill="#006847" opacity="0.85"/>
+  <rect x="156" y="240" width="12" height="44" fill="white" opacity="0.85"/>
+  <rect x="168" y="240" width="8" height="44" fill="#CE1126" opacity="0.85"/>
+  <rect x="300" y="190" width="40" height="28" rx="2" fill="#B22234" opacity="0.8"/>
+  <rect x="300" y="190" width="16" height="14" fill="#3C3B6E" opacity="0.9"/>
+  <rect x="330" y="330" width="34" height="22" rx="2" fill="#FF0000" opacity="0.8"/>
+  <rect x="340" y="330" width="14" height="22" fill="white" opacity="0.8"/>
+  <rect x="345" y="332" width="4" height="18" fill="#FF0000" opacity="0.8"/>
+  <!-- Trophy -->
+  <path d="M246,130 C246,116 240,96 236,86 L276,86 C272,96 266,116 266,130 Z" fill="url(#gold)" stroke="#B8860B" stroke-width="2"/>
+  <rect x="234" y="86" width="44" height="10" rx="2" fill="url(#gold)" stroke="#B8860B" stroke-width="1.5"/>
+  <rect x="226" y="96" width="60" height="8" rx="2" fill="url(#gold)" stroke="#B8860B" stroke-width="1.5"/>
+  <rect x="218" y="104" width="76" height="8" rx="2" fill="url(#gold)" stroke="#B8860B" stroke-width="1.5"/>
+  <circle cx="256" cy="102" r="10" fill="url(#gold)" stroke="#B8860B" stroke-width="1.5"/>
+  <!-- Stars -->
+  <text x="80" y="80" font-size="36" fill="#FFD700" opacity="0.7">✦</text>
+  <text x="390" y="60" font-size="28" fill="#FFD700" opacity="0.6">✦</text>
+  <text x="420" y="200" font-size="32" fill="#FFD700" opacity="0.5">✦</text>
+  <text x="60" y="350" font-size="24" fill="#FFD700" opacity="0.5">✦</text>
+  <text x="380" y="400" font-size="30" fill="#FFD700" opacity="0.6">✦</text>
+  <text x="100" y="190" font-size="20" fill="#FFD700" opacity="0.4">✦</text>
+  <!-- Year -->
+  <text x="256" y="460" font-family="Bebas Neue,Impact,sans-serif" font-size="48" fill="#FFD700" text-anchor="middle" font-weight="bold" letter-spacing="4">2026</text>
+</svg>
