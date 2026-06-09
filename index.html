@@ -86,7 +86,7 @@
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
         .match-card {
             background: linear-gradient(135deg, var(--card-bg), var(--card-bg-alt));
-            border: 1px solid var(--match-card-border); border-radius: 20px; padding: 24px;
+            border: 1px solid var(--match-card-border); border-radius: 20px; padding: 28px;
             backdrop-filter: blur(10px); transition: all 0.4s ease; position: relative; overflow: hidden;
         }
         .match-card::before {
@@ -97,21 +97,21 @@
         .match-card:hover::before { opacity: 1; }
         @keyframes rotate-glow { to { transform: rotate(360deg); } }
         .match-card:hover { transform: translateY(-5px); border-color: rgba(255,215,0,0.2); box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
-        .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,215,0,0.08); }
+        .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,215,0,0.08); }
         .match-group { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; font-weight: 400; padding: 4px 12px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,215,0,0.05)); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; }
         .match-date { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
         .match-teams { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; position: relative; }
-        .team-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; position: relative; }
+        .team-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; flex: 1; position: relative; }
         .team-avatar { width: 56px; height: 56px; border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
         .team-avatar .orbit-ring { position: absolute; border-radius: 50%; border: 2px solid var(--rc, var(--gold)); opacity: 0.5; animation: orbit-spin var(--rd, 3s) linear infinite; pointer-events: none; }
         .team-avatar .orbit-ring:nth-child(1) { width: 62px; height: 62px; --rc: var(--gold); --rd: 4s; }
-        .team-avatar .orbit-ring:nth-child(2) { width: 74px; height: 74px; --rc: var(--usa-blue); --rd: 3s; animation-direction: reverse; }
-        .team-avatar .orbit-ring:nth-child(3) { width: 86px; height: 86px; --rc: rgba(255,255,255,0.3); --rd: 5s; }
-        .team-avatar img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.4); position: relative; z-index: 1; border: 2px solid rgba(255,215,0,0.2); }
+        .team-avatar .orbit-ring:nth-child(2) { width: 74px; height: 74px; --rc: var(--gold-dark); --rd: 3s; animation-direction: reverse; }
+        .team-avatar .orbit-ring:nth-child(3) { width: 86px; height: 86px; --rc: var(--gold-light); --rd: 5s; }
+        .team-avatar img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.4); position: relative; z-index: 1; border: 2px solid rgba(255,215,0,0.2); }
         @keyframes orbit-spin { to { transform: rotate(360deg); } }
-        .team-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 400; text-align: center; letter-spacing: 1px; }
-        .vs-badge { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; font-weight: 400; color: var(--gold); padding: 0 16px; text-shadow: 0 0 20px rgba(255,215,0,0.2); }
-        .match-prediction { background: linear-gradient(135deg, rgba(255,215,0,0.04), rgba(0,217,255,0.04)); border: 1px solid rgba(255,215,0,0.1); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+        .team-name { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; font-weight: 400; text-align: center; letter-spacing: 0.5px; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+        .vs-badge { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; font-weight: 400; color: var(--gold); padding: 0 16px; text-shadow: 0 0 20px rgba(255,215,0,0.2); align-self: center; line-height: 1; }
+        .match-prediction { background: linear-gradient(135deg, rgba(255,215,0,0.04), rgba(0,217,255,0.04)); border: 1px solid rgba(255,215,0,0.1); border-radius: 12px; padding: 14px; margin-bottom: 16px; }
         .prediction-label { font-size: 0.6rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
         .prediction-scores { display: flex; justify-content: space-between; align-items: center; }
         .prediction-score { text-align: center; }
@@ -124,13 +124,14 @@
         .stat-item { display: flex; justify-content: space-between; font-size: 0.72rem; padding: 6px 10px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid rgba(255,255,255,0.03); }
         .stat-item .stat-label { color: var(--text-muted); } .stat-item .stat-value { font-weight: 600; color: var(--gold); }
         .predict-btn {
-            width: 100%; margin-top: 14px; padding: 12px;
+            width: 100%; margin-top: 18px; padding: 14px;
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             border: none; border-radius: 10px; color: var(--black); font-weight: 800;
-            font-size: 0.85rem; cursor: pointer; transition: all 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 0.9rem; cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
             font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
         }
+        .predict-btn .icon { font-size: 1.1rem; }
         .predict-btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,215,0,0.25); }
         .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
         .group-card { background: linear-gradient(135deg, var(--card-bg), var(--card-bg-alt)); border: 1px solid var(--match-card-border); border-radius: 18px; overflow: hidden; backdrop-filter: blur(10px); transition: all 0.3s; }
@@ -185,8 +186,8 @@
         .top-team-card .ball-container svg { width: 52px; height: 52px; position: relative; z-index: 1; }
         .top-team-card .ball-container .orbit-ring { position: absolute; border-radius: 50%; border: 2px solid var(--rc, var(--gold)); opacity: 0.4; animation: orbit-spin var(--rd, 3s) linear infinite; pointer-events: none; }
         .top-team-card .ball-container .orbit-ring:nth-child(1) { width: 68px; height: 68px; --rc: var(--gold); --rd: 4s; }
-        .top-team-card .ball-container .orbit-ring:nth-child(2) { width: 82px; height: 82px; --rc: var(--usa-blue); --rd: 3s; animation-direction: reverse; }
-        .top-team-card .ball-container .orbit-ring:nth-child(3) { width: 96px; height: 96px; --rc: rgba(255,255,255,0.15); --rd: 5s; }
+        .top-team-card .ball-container .orbit-ring:nth-child(2) { width: 82px; height: 82px; --rc: var(--gold-dark); --rd: 3s; animation-direction: reverse; }
+        .top-team-card .ball-container .orbit-ring:nth-child(3) { width: 96px; height: 96px; --rc: var(--gold-light); --rd: 5s; }
         .top-team-card .name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; font-weight: 400; color: var(--text); margin-bottom: 2px; letter-spacing: 2px; position: relative; z-index: 1; }
         .top-team-card .subtitle { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; position: relative; z-index: 1; }
         .top-team-card .win-prob { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; font-weight: 400; color: var(--gold); letter-spacing: 2px; position: relative; z-index: 1; }
@@ -892,9 +893,9 @@ function renderMatches() {
             <div class="match-teams">
                 <div class="team-wrap">
                     <div class="team-avatar">
-                        <div class="orbit-ring" style="--rc:${hc[0]};--rd:4s"></div>
-                        <div class="orbit-ring" style="--rc:${hc[1]};--rd:3s"></div>
-                        <div class="orbit-ring" style="--rc:${hc[2]};--rd:5s"></div>
+                        <div class="orbit-ring" style="--rd:4s"></div>
+                        <div class="orbit-ring" style="--rd:3s"></div>
+                        <div class="orbit-ring" style="--rd:5s"></div>
                         <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
                     </div>
                     <span class="team-name">${match.home}</span>
@@ -902,9 +903,9 @@ function renderMatches() {
                 <span class="vs-badge">VS</span>
                 <div class="team-wrap">
                     <div class="team-avatar">
-                        <div class="orbit-ring" style="--rc:${ac[0]};--rd:4s"></div>
-                        <div class="orbit-ring" style="--rc:${ac[1]};--rd:3s"></div>
-                        <div class="orbit-ring" style="--rc:${ac[2]};--rd:5s"></div>
+                        <div class="orbit-ring" style="--rd:4s"></div>
+                        <div class="orbit-ring" style="--rd:3s"></div>
+                        <div class="orbit-ring" style="--rd:5s"></div>
                         <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
                     </div>
                     <span class="team-name">${match.away}</span>
@@ -925,7 +926,7 @@ function renderMatches() {
                 <div class="stat-item"><span class="stat-label">Gols Esperados</span><span class="stat-value">${pred.homeScore + pred.awayScore}</span></div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                🔍 Análise DeepSeek
+                <span class="icon">🔍</span> Análise DeepSeek
             </button>
         </div>`;
     }).join('');
@@ -1003,9 +1004,9 @@ function renderPredictions() {
             <div class="rank">${i === 0 ? '🏆 TOP 1' : i === 1 ? '🥈 TOP 2' : i === 2 ? '🥉 TOP 3' : `#${i + 1}`}</div>
             <div class="ball-container">
                 ${ballSvg(52)}
-                <div class="orbit-ring" style="--rc:${cols[0]};--rd:4s"></div>
-                <div class="orbit-ring" style="--rc:${cols[1]};--rd:3s"></div>
-                <div class="orbit-ring" style="--rc:${cols[2]};--rd:5s"></div>
+                <div class="orbit-ring" style="--rd:4s"></div>
+                <div class="orbit-ring" style="--rd:3s"></div>
+                <div class="orbit-ring" style="--rd:5s"></div>
             </div>
             <div class="name">${team.name}</div>
             <div class="subtitle">World Cup 2026</div>
@@ -1033,9 +1034,9 @@ function renderPredictions() {
             <div class="match-teams">
                 <div class="team-wrap">
                     <div class="team-avatar">
-                        <div class="orbit-ring" style="--rc:${hc[0]};--rd:4s"></div>
-                        <div class="orbit-ring" style="--rc:${hc[1]};--rd:3s"></div>
-                        <div class="orbit-ring" style="--rc:${hc[2]};--rd:5s"></div>
+                        <div class="orbit-ring" style="--rd:4s"></div>
+                        <div class="orbit-ring" style="--rd:3s"></div>
+                        <div class="orbit-ring" style="--rd:5s"></div>
                         <img src="${getTeamFlag(match.home)}" alt="${match.home}" loading="lazy">
                     </div>
                     <span class="team-name">${match.home}</span>
@@ -1043,9 +1044,9 @@ function renderPredictions() {
                 <span class="vs-badge">VS</span>
                 <div class="team-wrap">
                     <div class="team-avatar">
-                        <div class="orbit-ring" style="--rc:${ac[0]};--rd:4s"></div>
-                        <div class="orbit-ring" style="--rc:${ac[1]};--rd:3s"></div>
-                        <div class="orbit-ring" style="--rc:${ac[2]};--rd:5s"></div>
+                        <div class="orbit-ring" style="--rd:4s"></div>
+                        <div class="orbit-ring" style="--rd:3s"></div>
+                        <div class="orbit-ring" style="--rd:5s"></div>
                         <img src="${getTeamFlag(match.away)}" alt="${match.away}" loading="lazy">
                     </div>
                     <span class="team-name">${match.away}</span>
@@ -1060,7 +1061,7 @@ function renderPredictions() {
                 </div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                🔍 Análise DeepSeek
+                <span class="icon">🔍</span> Análise DeepSeek
             </button>
         </div>`;
     }).join('');
