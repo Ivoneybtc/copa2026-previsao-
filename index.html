@@ -277,7 +277,7 @@
 <div class="particles" id="particles"></div>
 <div class="loading-overlay" id="loading">
     <div class="loading-spinner"></div>
-    <div class="loading-text">Inicializando IA DeepSeek...</div>
+    <div class="loading-text">Inicializando Inteligência Artificial...</div>
 </div>
 <header class="header">
     <div class="logo">
@@ -332,7 +332,7 @@
         </svg>
         <div class="logo-text">
             <h1>Copa 2026</h1>
-            <span>Powered by DeepSeek AI</span>
+            <span>Acerte as previsões com Inteligência Artificial</span>
         </div>
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
@@ -351,7 +351,7 @@
 <section class="hero">
     <div class="ai-badge">
         <span class="dot"></span>
-        Powered by DeepSeek AI
+        Acerte as previsões com Inteligência Artificial
     </div>
     <h2>Copa do Mundo 2026</h2>
     <p>Análise preditiva avançada com inteligência artificial para todos os 104 jogos do torneio</p>
@@ -376,7 +376,7 @@
         <div class="bracket-container"><div class="bracket" id="bracket"></div></div>
     </div>
     <div id="section-predictions" class="section-content">
-        <div class="section-title"><div class="icon">🤖</div><span>Previsões IA DeepSeek - Favoritos ao Título</span></div>
+        <div class="section-title"><div class="icon">🤖</div><span>Previsões por Inteligência Artificial - Favoritos ao Título</span></div>
         <div class="top-teams" id="top-teams"></div>
         <div class="section-title" style="margin-top:35px;"><div class="icon">🔮</div><span>Previsões Detalhadas por Jogo</span></div>
         <div class="cards-grid" id="predictions-grid"></div>
@@ -389,7 +389,7 @@
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
     <div class="modal" onclick="event.stopPropagation()">
         <button class="modal-close" onclick="closeModal()">✕</button>
-        <h2 id="modal-title">🤖 Análise DeepSeek</h2>
+        <h2 id="modal-title">🧠 Análise por Inteligência Artificial</h2>
         <div class="modal-content" id="modal-content"></div>
     </div>
 </div>
@@ -912,7 +912,7 @@ function renderMatches() {
                 </div>
             </div>
             <div class="match-prediction">
-                <div class="prediction-label"><span class="dot"></span>Previsão DeepSeek</div>
+                <div class="prediction-label"><span class="dot"></span>Previsão por Inteligência Artificial</div>
                 <div class="prediction-scores">
                     <div class="prediction-score"><div class="score">${pred.homeScore}</div><div class="prob">${pred.homeWin}%</div></div>
                     <div class="prediction-winner"><div class="winner-text">${pred.winner === 'Empate' ? 'Empate' : pred.winner}</div><div class="confidence">${pred.confidence}% confiança</div></div>
@@ -926,7 +926,7 @@ function renderMatches() {
                 <div class="stat-item"><span class="stat-label">Gols Esperados</span><span class="stat-value">${pred.homeScore + pred.awayScore}</span></div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                <span class="icon">🔍</span> Análise DeepSeek
+                <span class="icon">🧠</span> Análise por Inteligência Artificial
             </button>
         </div>`;
     }).join('');
@@ -1053,7 +1053,7 @@ function renderPredictions() {
                 </div>
             </div>
             <div class="match-prediction">
-                <div class="prediction-label"><span class="dot"></span>Previsão DeepSeek</div>
+                <div class="prediction-label"><span class="dot"></span>Previsão por Inteligência Artificial</div>
                 <div class="prediction-scores">
                     <div class="prediction-score"><div class="score">${pred.homeScore}</div><div class="prob">${pred.homeWin}%</div></div>
                     <div class="prediction-winner"><div class="winner-text">${pred.winner === 'Empate' ? 'Empate' : pred.winner}</div><div class="confidence">${pred.confidence}%</div></div>
@@ -1061,7 +1061,7 @@ function renderPredictions() {
                 </div>
             </div>
             <button class="predict-btn" onclick="showAnalysis('${match.home}', '${match.away}')">
-                <span class="icon">🔍</span> Análise DeepSeek
+                <span class="icon">🧠</span> Análise por Inteligência Artificial
             </button>
         </div>`;
     }).join('');
@@ -1090,11 +1090,11 @@ async function showAnalysis(home, away) {
     const content = document.getElementById('modal-content');
     const title = document.getElementById('modal-title');
 
-    title.innerHTML = `🔮 Análise DeepSeek: ${home} vs ${away}`;
+    title.innerHTML = `🧠 Análise por Inteligência Artificial: ${home} vs ${away}`;
     content.innerHTML = `
         <div style="text-align: center; padding: 40px 20px;">
             <div class="loading-spinner" style="margin: 0 auto 18px;"></div>
-            <div style="color: var(--text-muted); font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Consultando DeepSeek AI...</div>
+            <div style="color: var(--text-muted); font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Consultando Inteligência Artificial...</div>
         </div>
     `;
     modal.classList.add('active');
